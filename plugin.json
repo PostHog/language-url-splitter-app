@@ -1,0 +1,45 @@
+{
+    "name": "Language URL stripper",
+    "config": [
+        {
+            "key": "pattern",
+            "name": "Pattern",
+            "type": "string",
+            "default": "^/([a-z]{2})(?=/|#|\\?|$)",
+            "hint": "Ininitalized with `const regexp = new RegExp($pattern)`",
+            "required": true
+        },
+        {
+            "key": "matchGroup",
+            "name": "Match group",
+            "type": "string",
+            "default": "1",
+            "hint": "Used in: `const value = regexp.match($pathname)[$matchGroup]`",
+            "required": true
+        },
+        {
+            "key": "property",
+            "name": "Property",
+            "type": "string",
+            "default": "locale",
+            "hint": "Name of the event property we will store the matched value in",
+            "required": true
+        },
+        {
+            "key": "replacePattern",
+            "name": "Replacement pattern",
+            "type": "string",
+            "default": "^(/[a-z]{2})(/|(?=/|#|\\?|$))",
+            "hint": "Initialized with `new RegExp($pattern)`, leave empty to disable URL cleanup.",
+            "required": true
+        },
+        {
+            "key": "replaceValue",
+            "name": "Replacement value",
+            "type": "string",
+            "default": "/",
+            "hint": "`$pathname = $pathname.replace($pattern, $value)`",
+            "required": true
+        }
+    ]
+}
