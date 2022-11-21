@@ -30,7 +30,15 @@
             "name": "Replacement pattern",
             "type": "string",
             "default": "^(/[a-z]{2})(/|(?=/|#|\\?|$))",
-            "hint": "Initialized with `new RegExp($pattern)`, leave empty to disable URL cleanup.",
+            "hint": "Initialized with `new RegExp($pattern)`, leave empty to disable path cleanup.",
+            "required": true
+        },
+        {
+            "key": "replaceKey",
+            "name": "Replacement key",
+            "type": "string",
+            "default": "$pathname",
+            "hint": "Where to store the updated path. Keep as `$pathname` to override.",
             "required": true
         },
         {
@@ -38,7 +46,7 @@
             "name": "Replacement value",
             "type": "string",
             "default": "/",
-            "hint": "`$pathname = $pathname.replace($pattern, $value)`",
+            "hint": "`properties[key] = $pathname.replace(pattern, value)`",
             "required": true
         }
     ]

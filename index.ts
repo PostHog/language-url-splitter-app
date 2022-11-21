@@ -1,5 +1,5 @@
 export function processEvent(event, { config }) {
-    const { pattern, matchGroup, property, replacePattern, replaceValue } = config
+    const { pattern, matchGroup, property, replacePattern, replaceKey, replaceValue } = config
     if (event.properties && typeof event.properties['$pathname'] === 'string') {
         const regexp = new RegExp(pattern)
         const match = event.properties['$pathname'].match(regexp)
@@ -7,7 +7,7 @@ export function processEvent(event, { config }) {
             event.properties[property] = match[matchGroup]
             if (replacePattern) {
                 const replaceRegexp = new RegExp(replacePattern)
-                event.properties['$pathname'] = event.properties['$pathname'].replace(replaceRegexp, replaceValue)
+                event.properties[replaceKey] = event.properties['$pathname'].replace(replaceRegexp, replaceValue)
             }
         }
     }
